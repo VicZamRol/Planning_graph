@@ -1,0 +1,75 @@
+Predicados: 'MANOSLIMPIAS', 'CENA', 'REGALO', 'SILENCIO', 'BASURA'
+
+Estado Inicial: 'BASURA', 'MANOSLIMPIAS', 'SILENCIO'
+
+Objetivo: 'CENA', 'REGALO', '-BASURA'
+
+Accion cocinar: Precondiciones: ['MANOSLIMPIAS']. Efectos: ['CENA']
+Accion envolver: Precondiciones: ['SILENCIO']. Efectos: ['REGALO']
+Accion sacarBasura: Precondiciones: []. Efectos: ['-BASURA', '-MANOSLIMPIAS']
+Accion triturar: Precondiciones: []. Efectos: ['-BASURA', '-SILENCIO']
+
+Nivel L(0) del grafo: 
+'MANOSLIMPIAS', '-CENA', '-REGALO', 'SILENCIO', 'BASURA'
+
+Nivel A(1) del grafo: 
+['cocinar', ['MANOSLIMPIAS'], ['CENA']]
+['envolver', ['SILENCIO'], ['REGALO']]
+['sacarBasura', [], ['-BASURA', '-MANOSLIMPIAS']]
+['triturar', [], ['-BASURA', '-SILENCIO']]
+['MANOSLIMPIAS', ['MANOSLIMPIAS'], ['MANOSLIMPIAS']]
+['-CENA', ['-CENA'], ['-CENA']]
+['-REGALO', ['-REGALO'], ['-REGALO']]
+['SILENCIO', ['SILENCIO'], ['SILENCIO']]
+['BASURA', ['BASURA'], ['BASURA']]
+
+Nivel L(1) del grafo: 
+'CENA', 'REGALO', '-BASURA', '-MANOSLIMPIAS', '-SILENCIO', 'MANOSLIMPIAS', '-CENA', '-REGALO', 'SILENCIO', 'BASURA'
+
+Arcos L(0) - A(1)
+MANOSLIMPIAS -> cocinar
+SILENCIO -> envolver
+MANOSLIMPIAS -> MANOSLIMPIAS
+-CENA -> -CENA
+-REGALO -> -REGALO
+SILENCIO -> SILENCIO
+BASURA -> BASURA
+
+Arcos A(1) - L(1)
+cocinar -> CENA
+envolver -> REGALO
+sacarBasura -> -BASURA
+sacarBasura -> -MANOSLIMPIAS
+triturar -> -BASURA
+triturar -> -SILENCIO
+MANOSLIMPIAS -> MANOSLIMPIAS
+-CENA -> -CENA
+-REGALO -> -REGALO
+SILENCIO -> SILENCIO
+BASURA -> BASURA
+
+Enlaces Mutex entre Acciones del nivel1
+['cocinar', 'sacarBasura']
+['envolver', 'triturar']
+['MANOSLIMPIAS', 'sacarBasura']
+['-CENA', 'cocinar']
+['-REGALO', 'envolver']
+['SILENCIO', 'triturar']
+['BASURA', 'sacarBasura']
+['BASURA', 'triturar']
+
+Enlaces Mutex entre Literales del nivel1
+['CENA', '-CENA']
+['REGALO', '-REGALO']
+['-BASURA', 'BASURA']
+['-MANOSLIMPIAS', 'MANOSLIMPIAS']
+['-SILENCIO', 'SILENCIO']
+['CENA', '-MANOSLIMPIAS']
+['REGALO', '-SILENCIO']
+['-MANOSLIMPIAS', 'BASURA']
+['-SILENCIO', 'BASURA']
+
+Literales, acciones y arcos son diferentes
+
+Estan todos los objetivos en los literales sin enlaces mutex
+
